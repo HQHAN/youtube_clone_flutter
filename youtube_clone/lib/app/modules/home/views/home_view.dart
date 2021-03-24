@@ -3,18 +3,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 
+import '../../../consts.dart';
 import '../controllers/home_controller.dart';
-
-const ASSET_FOLDER = 'assets/svg/icons/';
 
 class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('HomeView'),
-        centerTitle: true,
-      ),
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
@@ -24,17 +19,17 @@ class HomeView extends GetView<HomeController> {
           onTap: controller.onPageChanged,
           items: [
             BottomNavigationBarItem(
-              icon: SvgPicture.asset('${ASSET_FOLDER}home_off.svg'),
-              activeIcon: SvgPicture.asset('${ASSET_FOLDER}home_on.svg'),
+              icon: SvgPicture.asset('${ICON_FOLDER}home_off.svg'),
+              activeIcon: SvgPicture.asset('${ICON_FOLDER}home_on.svg'),
               label: '홈',
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
-                '${ASSET_FOLDER}compass_off.svg',
+                '${ICON_FOLDER}compass_off.svg',
                 width: 22,
               ),
               activeIcon: SvgPicture.asset(
-                '${ASSET_FOLDER}compass_on.svg',
+                '${ICON_FOLDER}compass_on.svg',
                 width: 22,
               ),
               label: '탐색',
@@ -43,20 +38,20 @@ class HomeView extends GetView<HomeController> {
               icon: Padding(
                 padding: EdgeInsets.only(top: 8.0),
                 child: SvgPicture.asset(
-                  '${ASSET_FOLDER}plus.svg',
+                  '${ICON_FOLDER}plus.svg',
                   width: 35,
                 ),
               ),
               label: "",
             ),
             BottomNavigationBarItem(
-              icon: SvgPicture.asset('${ASSET_FOLDER}subs_off.svg'),
-              activeIcon: SvgPicture.asset('${ASSET_FOLDER}subs_on.svg'),
+              icon: SvgPicture.asset('${ICON_FOLDER}subs_off.svg'),
+              activeIcon: SvgPicture.asset('${ICON_FOLDER}subs_on.svg'),
               label: '구독',
             ),
             BottomNavigationBarItem(
-              icon: SvgPicture.asset('${ASSET_FOLDER}library_off.svg'),
-              activeIcon: SvgPicture.asset('${ASSET_FOLDER}library_on.svg'),
+              icon: SvgPicture.asset('${ICON_FOLDER}library_off.svg'),
+              activeIcon: SvgPicture.asset('${ICON_FOLDER}library_on.svg'),
               label: '보관함',
             ),
           ],

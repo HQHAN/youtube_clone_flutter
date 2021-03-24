@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
-import 'package:youtube_clone/app/modules/home/views/home_view.dart';
+import 'package:youtube_clone/app/consts.dart';
 
 class AddView extends GetView {
   Widget _itemView(
@@ -26,7 +26,7 @@ class AddView extends GetView {
               child: Container(
                 height: iconWidth,
                 width: iconHeight,
-                child: SvgPicture.asset(ASSET_FOLDER + iconFileName),
+                child: SvgPicture.asset(ICON_FOLDER + iconFileName),
               ),
             ),
           ),
