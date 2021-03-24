@@ -34,8 +34,8 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.youtube_clone"
-        minSdkVersion 16
+        applicationId "com.hans.youtube.com.youtube_clone"
+        minSdkVersion 17
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
