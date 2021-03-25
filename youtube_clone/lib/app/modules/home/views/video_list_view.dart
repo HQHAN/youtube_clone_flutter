@@ -13,6 +13,7 @@ class VideoListView extends GetView {
   Widget build(BuildContext context) {
     return SafeArea(
       child: CustomScrollView(
+        controller: controller.scrollController,
         slivers: [
           SliverAppBar(
             backgroundColor: Colors.white,

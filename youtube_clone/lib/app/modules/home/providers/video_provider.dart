@@ -11,9 +11,9 @@ class VideoProvider extends GetConnect {
     httpClient.baseUrl = 'https://youtube.googleapis.com';
   }
 
-  Future<Video> getVideo() async {
+  Future<Video> getVideo(String nextPageToken) async {
     var response = await get(
-        "/youtube/v3/search?part=snippet&channelId=UC0sfSZeoSUeWxys7OKkTelQ&maxResults=10&order=date&type=video&videoDefinition=high&key=AIzaSyBGUvL8aL_pILWkA_G1S_jWSKVE-Ol186I");
+        "/youtube/v3/search?pageToken=$nextPageToken&part=snippet&channelId=UC0sfSZeoSUeWxys7OKkTelQ&maxResults=10&order=date&type=video&videoDefinition=high&key=AIzaSyBGUvL8aL_pILWkA_G1S_jWSKVE-Ol186I");
     if (response.hasError) {
       return Future.error(response.statusText);
     } else {
@@ -32,7 +32,4 @@ class VideoProvider extends GetConnect {
       return Statistics.fromJson(response.body['items'][0]['statistics']);
     }
   }
-  // Future<Response<Video>> postVideo(Video video) async =>
-  //     await post('video', video);
-  // Future<Response> deleteVideo(int id) async => await delete('video/$id');
 }

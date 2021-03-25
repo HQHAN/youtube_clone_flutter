@@ -10,7 +10,7 @@ import 'package:youtube_clone/app/modules/home/views/subscribe_view.dart';
 import '../video_model.dart';
 
 enum NavigationPages {
-  HOME,
+  VIDEO_LIST,
   SEARCH,
   ADD,
   SUBSCRIBE,
@@ -21,11 +21,14 @@ class HomeController extends GetxController {
   final index = 0.obs;
   final totalVideoCount = 0.obs;
   final videoList = [].obs;
+  ScrollController scrollController = ScrollController();
+  String nextPageToken = "";
 
   @override
   void onInit() {
     super.onInit();
     _videoLoad();
+    _eventListener();
   }
 
   @override
@@ -46,7 +49,7 @@ class HomeController extends GetxController {
   Widget getCurrentView() {
     Widget currentPage = Container();
     switch (NavigationPages.values[index.value]) {
-      case NavigationPages.HOME:
+      case NavigationPages.VIDEO_LIST:
         currentPage = VideoListView();
         break;
       case NavigationPages.SEARCH:
@@ -73,13 +76,24 @@ class HomeController extends GetxController {
 
   void _videoLoad() async {
     try {
-      Video video = await VideoProvider.instance.getVideo();
+      Video video = await VideoProvider.instance.getVideo(nextPageToken);
       print(video?.items?.length);
       if (video != null && video.items != null && video.items.length > 0) {
-        videoList(video.items);
+        videoList.addAll(video.items);
+        nextPageToken = video.nextPageToken;
       }
     } catch (e) {
       print(e);
     }
+  }
+
+  void _eventListener() {
+    scrollController.addListener(() {
+      if (scrollController.position.maxScrollExtent ==
+              scrollController.position.pixels &&
+          nextPageToken != "") {
+        _videoLoad();
+      }
+    });
   }
 }

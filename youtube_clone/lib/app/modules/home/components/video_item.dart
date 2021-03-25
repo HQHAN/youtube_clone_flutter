@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -40,11 +41,15 @@ class _VideoItemState extends State<VideoItem> {
         );
       },
       child: Container(
-        child: Image(
-          image: Image.network(
-            widget.items.snippet.thumbnails.high.url,
-            fit: BoxFit.fitWidth,
-          ).image,
+        child: CachedNetworkImage(
+          imageUrl: widget.items.snippet.thumbnails.high.url,
+          fit: BoxFit.fitWidth,
+          placeholder: (context, url) => Container(
+            height: 230,
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          ),
         ),
         color: Colors.grey.withOpacity(0.3),
       ),

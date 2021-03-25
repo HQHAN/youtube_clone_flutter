@@ -11,7 +11,7 @@ class Video {
   Video.fromJson(Map<String, dynamic> json) {
     kind = json['kind'];
     etag = json['etag'];
-    nextPageToken = json['nextPageToken'];
+    nextPageToken = json['nextPageToken'] ?? "";
     regionCode = json['regionCode'];
     pageInfo =
         json['pageInfo'] != null ? PageInfo.fromJson(json['pageInfo']) : null;
