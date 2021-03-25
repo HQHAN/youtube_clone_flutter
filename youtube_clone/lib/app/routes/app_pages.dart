@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:youtube_clone/app/modules/home/bindings/home_binding.dart';
@@ -12,12 +13,12 @@ class AppPages {
 
   static final routes = [
     GetPage(
-      name: _Paths.HOME,
+      name: Routes.HOME,
       page: () => HomeView(),
       binding: HomeBinding(),
     ),
     GetPage(
-      name: _Paths.YOUTUBE_SCREEN,
+      name: Routes.YOUTUBE_SCREEN,
       page: () => YoutubeScreenView(),
       binding: YoutubeScreenBinding(),
     ),

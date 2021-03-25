@@ -1,10 +1,13 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:youtube_clone/app/modules/home/providers/video_provider.dart';
 import 'package:youtube_clone/app/modules/home/views/add_view.dart';
-import 'package:youtube_clone/app/modules/home/views/home_sub_view.dart';
+import 'package:youtube_clone/app/modules/home/views/video_list_view.dart';
 import 'package:youtube_clone/app/modules/home/views/library_view.dart';
 import 'package:youtube_clone/app/modules/home/views/search_view.dart';
 import 'package:youtube_clone/app/modules/home/views/subscribe_view.dart';
+
+import '../video_model.dart';
 
 enum NavigationPages {
   HOME,
@@ -16,9 +19,13 @@ enum NavigationPages {
 
 class HomeController extends GetxController {
   final index = 0.obs;
+  final totalVideoCount = 0.obs;
+  final videoList = [].obs;
+
   @override
   void onInit() {
     super.onInit();
+    _videoLoad();
   }
 
   @override
@@ -40,7 +47,7 @@ class HomeController extends GetxController {
     Widget currentPage = Container();
     switch (NavigationPages.values[index.value]) {
       case NavigationPages.HOME:
-        currentPage = HomeSubView();
+        currentPage = VideoListView();
         break;
       case NavigationPages.SEARCH:
         currentPage = SearchView();
@@ -62,5 +69,17 @@ class HomeController extends GetxController {
     Get.bottomSheet(
       AddView(),
     );
+  }
+
+  void _videoLoad() async {
+    try {
+      Video video = await VideoProvider.instance.getVideo();
+      print(video?.items?.length);
+      if (video != null && video.items != null && video.items.length > 0) {
+        videoList(video.items);
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 }
