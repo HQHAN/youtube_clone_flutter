@@ -3,8 +3,7 @@ part of 'app_pages.dart';
 
 abstract class Routes {
   static const HOME = Paths.HOME;
-  static const YOUTUBE_SCREEN =
-      Paths.YOUTUBE_SCREEN + "/" + _Parameters.VIDEO_ID;
+  static const YOUTUBE_SCREEN = Paths.YOUTUBE_SCREEN;
 }
 
 abstract class Paths {

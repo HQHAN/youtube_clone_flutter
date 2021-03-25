@@ -37,7 +37,8 @@ class _VideoItemState extends State<VideoItem> {
     return GestureDetector(
       onTap: () {
         Get.toNamed(
-          Paths.YOUTUBE_SCREEN + "/" + "12341515",
+          Paths.YOUTUBE_SCREEN,
+          arguments: {'videoId': widget.items.id.videoId},
         );
       },
       child: Container(

@@ -6,14 +6,6 @@ import 'package:youtube_clone/app/modules/youtube_screen/controllers/youtube_con
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class YoutubeScreenView extends GetView<YoutubeController> {
-  YoutubePlayerController _youtubeController = YoutubePlayerController(
-    initialVideoId: 'iLnmTe5Q2Qw',
-    flags: YoutubePlayerFlags(
-      autoPlay: true,
-      mute: true,
-    ),
-  );
-
   Widget _titleZone() {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -21,13 +13,13 @@ class YoutubeScreenView extends GetView<YoutubeController> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            "controller.video.value.snippet.title",
+            controller.videoController.video.snippet.title,
             style: TextStyle(fontSize: 15),
           ),
           Row(
             children: [
               Text(
-                "조회수  '-'}회",
+                controller.videoController.viewCountString,
                 style: TextStyle(
                   fontSize: 13,
                   color: Colors.black.withOpacity(0.5),
@@ -52,7 +44,7 @@ class YoutubeScreenView extends GetView<YoutubeController> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
       child: Text(
-        "디스크립",
+        "Description",
         style: TextStyle(
           fontSize: 14,
         ),
@@ -152,14 +144,14 @@ class YoutubeScreenView extends GetView<YoutubeController> {
       body: Column(
         children: [
           YoutubePlayer(
-            controller: _youtubeController,
+            controller: controller.youtubeController,
             showVideoProgressIndicator: true,
             progressIndicatorColor: Colors.blueAccent,
             topActions: <Widget>[
               const SizedBox(width: 8.0),
               Expanded(
                 child: Text(
-                  _youtubeController.metadata.title,
+                  controller.youtubeController.metadata.title,
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18.0,
