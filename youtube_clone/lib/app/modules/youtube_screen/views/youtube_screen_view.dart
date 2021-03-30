@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:youtube_clone/app/modules/youtube_screen/controllers/youtube_controller.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -27,7 +28,10 @@ class YoutubeScreenView extends GetView<YoutubeController> {
               ),
               Text(" · "),
               Text(
-                "날",
+                DateFormat("yyyy-MM-dd").format(
+                  DateTime.parse(
+                      controller.videoController.video.snippet.publishTime),
+                ),
                 style: TextStyle(
                   fontSize: 13,
                   color: Colors.black.withOpacity(0.5),
@@ -44,7 +48,7 @@ class YoutubeScreenView extends GetView<YoutubeController> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
       child: Text(
-        "Description",
+        controller.videoController.video.snippet.description,
         style: TextStyle(
           fontSize: 14,
         ),
@@ -65,8 +69,10 @@ class YoutubeScreenView extends GetView<YoutubeController> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        _buttonOne("like", "1000"),
-        _buttonOne("dislike", "10002"),
+        _buttonOne(
+            "like", controller.videoController.statistics.value.likeCount),
+        _buttonOne("dislike",
+            controller.videoController.statistics.value.dislikeCount),
         _buttonOne("share", "공유"),
         _buttonOne("save", "저장"),
       ],

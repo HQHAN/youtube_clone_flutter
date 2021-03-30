@@ -3,7 +3,6 @@ import 'package:youtube_clone/app/modules/home/controllers/video_controller.dart
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class YoutubeController extends GetxController {
-  //TODO: Implement YoutubeController
   VideoController videoController;
   YoutubePlayerController youtubeController;
   @override
