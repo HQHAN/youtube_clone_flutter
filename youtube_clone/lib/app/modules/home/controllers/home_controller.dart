@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:youtube_clone/app/modules/home/providers/video_provider.dart';
+import 'package:youtube_clone/app/data/respository/providers/video_provider.dart';
 import 'package:youtube_clone/app/modules/home/views/add_view.dart';
 import 'package:youtube_clone/app/modules/home/views/video_list_view.dart';
 import 'package:youtube_clone/app/modules/home/views/library_view.dart';
@@ -80,7 +80,7 @@ class HomeController extends GetxController {
       print(video?.items?.length);
       if (video != null && video.items != null && video.items.length > 0) {
         videoList.addAll(video.items);
-        nextPageToken = video.nextPageToken;
+        nextPageToken = video.nextPageToken ?? "";
       }
     } catch (e) {
       print(e);

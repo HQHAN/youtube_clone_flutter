@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:youtube_clone/app/routes/app_pages.dart';
 
 import '../../../consts.dart';
 
@@ -26,7 +28,7 @@ class CustomTitle extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 10.0),
           child: GestureDetector(
             onTap: () {
-              print('search clicked');
+              Get.toNamed(Routes.SEARCH);
             },
             child: SvgPicture.asset('${ICON_FOLDER}search.svg', width: 30),
           ),

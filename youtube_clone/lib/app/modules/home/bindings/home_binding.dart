@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:youtube_clone/app/modules/home/providers/video_provider.dart';
+import 'package:youtube_clone/app/data/respository/providers/video_provider.dart';
 
 import '../controllers/home_controller.dart';
 

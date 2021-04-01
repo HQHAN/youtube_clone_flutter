@@ -4,6 +4,7 @@ part of 'app_pages.dart';
 abstract class Routes {
   static const HOME = Paths.HOME;
   static const YOUTUBE_SCREEN = Paths.YOUTUBE_SCREEN;
+  static const SEARCH = '/search';
 }
 
 abstract class Paths {
